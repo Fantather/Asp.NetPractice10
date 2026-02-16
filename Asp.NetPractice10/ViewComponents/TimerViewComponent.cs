@@ -13,7 +13,7 @@ namespace Asp.NetPractice10.ViewComponents
         public IViewComponentResult Invoke()
         {
             string time = $"Current time: {timeService.GetTime()}";
-            return Content(time);
+            return View(time);
         }
     }
 }

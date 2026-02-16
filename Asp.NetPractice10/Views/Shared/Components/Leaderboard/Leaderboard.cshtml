@@ -1,0 +1,17 @@
+﻿@model IEnumerable<GameScore>
+
+<table>
+    <thead>
+        <tr>
+            <th>Leaderboard</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var score in Model)
+        {
+            <tr>
+                <td>@score.UserName - @score.Score</td>
+            </tr>
+        }
+    </tbody>
+</table>

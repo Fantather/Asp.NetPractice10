@@ -81,17 +81,10 @@ namespace Asp.NetPractice10.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id != null)
-            {
-                var currentUser = await _context.Users.FirstOrDefaultAsync(p => p.Id == id);
-                if (currentUser != null)
-                {
-                    _context.Users.Remove(currentUser);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            return NotFound();
+            User user = new User { Id = id.Value };
+            _context.Entry(user).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
